@@ -5,7 +5,7 @@ func sortArray(array1: [Int], array2: [Int]) -> [Int] {
     
     var arrayOne = array1
     var arrayTwo = array2
-    var resultArray: [Int]?
+    var resultArray = [0,1]
     
     for i in 0..<arrayOne.count {
         for j in 0..<arrayTwo.count {
@@ -17,23 +17,22 @@ func sortArray(array1: [Int], array2: [Int]) -> [Int] {
     
     resultArray = array2
     
-    if arrayOne[0] < arrayTwo[0] {
-        resultArray?.insert(arrayOne[0], at: 0)
-        arrayOne.remove(at: 0)
-    }
-    
     for i in 0..<arrayOne.count {
-        resultArray?.append(arrayOne[i])
+        resultArray.append(arrayOne[i])
     }
     
-    for i in 0..< resultArray.count {
-        while resultArray[i] > resultArray [i + 1] {
-            resultArray?.append(resultArray[i])
-            resultArray?.remove(at: i)
+    for i in 0..<resultArray.count-2 {
+        for j in 0..<resultArray.count - 2 - i {
+            var tmp = 0
+            if resultArray[j] > resultArray [j + 1] {
+                tmp = resultArray[j + 1]
+                resultArray[j + 1] = resultArray[j]
+                resultArray[j] = tmp
+            }
         }
     }
 
-    return resultArray!
+    return resultArray
 }
 
 sortArray(array1: [1,5,3], array2: [2,4,3])
