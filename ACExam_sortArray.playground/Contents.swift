@@ -38,6 +38,9 @@ func sortArray(array1: [Int], array2: [Int]) -> [Int] {
     return array3
 }
 
+// 用記分板再還原消重複值
+// 最後用氣泡排序(bubble sort)
+
 sortArray(array1: [1,5,3,1], array2: [2,4,3])
 
 
@@ -45,8 +48,8 @@ sortArray(array1: [1,5,3,1], array2: [2,4,3])
 func sortArray2(array1: [Int], array2: [Int]) -> [Int] {
     var array3 = array1 + array2
     array3 = Array(Set(array3))
-    for i in 0..<array3.count - 1 {
-        for j in 0..<array3.count - 1 {
+    for i in 0 ..< array3.count - 1 {
+        for j in 0 ..< array3.count - 1 {
             if (array3[i] > array3[j + 1] && i < j + 1) {
                 swap(&array3[i], &array3[j + 1])
             }
